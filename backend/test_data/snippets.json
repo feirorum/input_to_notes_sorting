@@ -1,0 +1,127 @@
+[
+  {
+    "id": "snippet-shoe-size",
+    "content": "Sam's shoe size is now 34",
+    "source": "manual",
+    "timestamp": "2025-01-13T15:30:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-project-security",
+    "content": "We got the input needed from security, on the xyz project",
+    "source": "manual",
+    "timestamp": "2025-01-13T16:00:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-podcast-cap-theorem",
+    "content": "[15:23] Interesting point about CAP theorem - you really have to choose based on your specific use case, not just follow trends",
+    "source": "podcast",
+    "timestamp": "2025-01-12T10:15:23Z",
+    "metadata": {
+      "url": "https://softwareengineeringdaily.com/episode-442",
+      "media_type": "podcast",
+      "media_duration_minutes": 58,
+      "media_start_time": "2025-01-12T10:00:00Z",
+      "timestamp_in_media": "15:23"
+    }
+  },
+  {
+    "id": "snippet-podcast-out-of-range",
+    "content": "[62:30] Final thoughts on distributed systems",
+    "source": "podcast",
+    "timestamp": "2025-01-12T11:02:30Z",
+    "metadata": {
+      "url": "https://softwareengineeringdaily.com/episode-442",
+      "media_type": "podcast",
+      "media_duration_minutes": 58,
+      "media_start_time": "2025-01-12T10:00:00Z",
+      "timestamp_in_media": "62:30"
+    }
+  },
+  {
+    "id": "snippet-youtube-async",
+    "content": "[08:45] Great example of why you shouldn't mix sync and async code - can lead to blocking the event loop",
+    "source": "youtube",
+    "timestamp": "2025-01-11T14:38:45Z",
+    "metadata": {
+      "url": "https://youtube.com/watch?v=abc123xyz",
+      "media_type": "video",
+      "media_duration_minutes": 24,
+      "media_start_time": "2025-01-11T14:30:00Z",
+      "timestamp_in_media": "08:45"
+    }
+  },
+  {
+    "id": "snippet-task-auth-bug",
+    "content": "TODO: Fix the authentication bug that's causing timeout issues in production",
+    "source": "manual",
+    "timestamp": "2025-01-13T09:15:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-grocery-list",
+    "content": "Need to buy milk, eggs, bread, and some fresh vegetables this week",
+    "source": "manual",
+    "timestamp": "2025-01-13T07:30:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-project-idea",
+    "content": "Idea: What if we built a browser extension that automatically saves quotes from articles with the source URL? Could be really useful for research.",
+    "source": "manual",
+    "timestamp": "2025-01-13T19:45:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-expense",
+    "content": "Expense: Paid $15.50 for lunch meeting with potential client",
+    "source": "manual",
+    "timestamp": "2025-01-13T13:00:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-meeting",
+    "content": "Team standup tomorrow 10am - need to discuss the database migration progress with everyone",
+    "source": "manual",
+    "timestamp": "2025-01-13T17:00:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-journal",
+    "content": "Feeling really productive today. Managed to solve that tricky bug and help Alex with their code review. Work-life balance feels good.",
+    "source": "manual",
+    "timestamp": "2025-01-13T21:15:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-reading",
+    "content": "Article recommendation: 'Understanding B-Trees and Database Indexing' - https://blog.example.com/btrees - looks comprehensive",
+    "source": "web_clipper",
+    "timestamp": "2025-01-13T14:20:00Z",
+    "metadata": {
+      "url": "https://blog.example.com/btrees"
+    }
+  },
+  {
+    "id": "snippet-workout",
+    "content": "Completed leg day workout - 50 minutes, felt strong. Squats, lunges, calf raises.",
+    "source": "manual",
+    "timestamp": "2025-01-13T18:30:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-python-snippet",
+    "content": "Useful Python decorator for retry logic:\n```python\nfrom functools import wraps\nimport time\n\ndef retry(times=3, delay=1):\n    def decorator(func):\n        @wraps(func)\n        def wrapper(*args, **kwargs):\n            for i in range(times):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    if i == times - 1:\n                        raise\n                    time.sleep(delay)\n        return wrapper\n    return decorator\n```",
+    "source": "manual",
+    "timestamp": "2025-01-13T11:00:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "snippet-dentist",
+    "content": "Reminder: Need to call dentist tomorrow to schedule that cleaning appointment",
+    "source": "manual",
+    "timestamp": "2025-01-13T20:00:00Z",
+    "metadata": {}
+  }
+]

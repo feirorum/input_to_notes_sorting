@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input to Notes Sorting - Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Input to Notes Sorting</h1>
+            <p class="subtitle">Smart routing for your personal knowledge base</p>
+        </header>
+
+        <div class="demo-grid">
+            <!-- Left Pane: Input Examples -->
+            <div class="pane input-pane">
+                <h2>📥 Input Examples</h2>
+                <div class="pane-content">
+                    <div id="snippets-list" class="snippets-list">
+                        <!-- Snippets will be loaded here -->
+                    </div>
+
+                    <div class="custom-input">
+                        <h3>Or create custom input:</h3>
+                        <textarea
+                            id="custom-snippet"
+                            placeholder="Enter your snippet here..."
+                            rows="4"
+                        ></textarea>
+                        <div class="timestamp-editor">
+                            <label>
+                                Timestamp:
+                                <input type="datetime-local" id="custom-timestamp">
+                            </label>
+                        </div>
+                        <button onclick="matchCustomSnippet()" class="btn-primary">
+                            Match Custom Snippet
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Top Pane: Matching Analysis -->
+            <div class="pane matching-pane">
+                <h2>🔍 Matching Analysis</h2>
+                <div class="pane-content">
+                    <div id="matching-analysis" class="matching-analysis">
+                        <div class="placeholder">
+                            Select a snippet to see matching analysis
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Bottom Pane: Preview -->
+            <div class="pane preview-pane">
+                <h2>👁️ Preview</h2>
+                <div class="pane-content">
+                    <div id="preview-area" class="preview-area">
+                        <div class="placeholder">
+                            Preview will appear here
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Pane: Sorting History -->
+            <div class="pane history-pane">
+                <h2>📜 Sorting History</h2>
+                <div class="pane-content">
+                    <div id="history-list" class="history-list">
+                        <div class="placeholder">
+                            No actions yet
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manual Review Modal -->
+        <div id="manual-review-modal" class="modal">
+            <div class="modal-content">
+                <h2>Manual Review Required</h2>
+                <p id="manual-review-message"></p>
+                <div id="manual-review-options" class="manual-review-options">
+                    <!-- Options will be populated here -->
+                </div>
+                <div class="modal-actions">
+                    <button onclick="closeManualReview()" class="btn-secondary">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing matches...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

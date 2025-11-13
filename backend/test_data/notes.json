@@ -1,0 +1,134 @@
+[
+  {
+    "id": "family-info",
+    "title": "Family Info",
+    "content": "# Family Info\n\n## Shoe Sizes\n\n- Emma: 38 (2024-11-20)\n- John: 42 (2024-09-15)\n- Sam: 32 (2024-06-10)\n\n## Clothing Sizes\n\n- Emma: M\n- John: L\n- Sam: S\n\n## Birthdays\n\n- Emma: March 15\n- John: July 22\n- Sam: November 3",
+    "tags": ["personal", "family", "reference"],
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-11-20T14:30:00Z"
+  },
+  {
+    "id": "project-xyz",
+    "title": "Project XYZ - Customer Portal",
+    "content": "# Project XYZ - Customer Portal\n\n## Status: In Progress\n\nStarted: 2024-12-01\nDeadline: 2025-02-15\n\n## Team\n- Lead: Sarah Chen\n- Backend: Mike Johnson\n- Frontend: Alex Kim\n\n## Recent Updates\n\n### 2025-01-10\nCompleted authentication module. Testing in progress.\n\n### 2025-01-05\nKickoff meeting completed. Requirements finalized.\n\n## Blockers\n\n- Waiting for security team approval (requested 2025-01-08)\n- Need design mockups for dashboard\n\n## Next Steps\n\n- Implement user dashboard\n- Set up CI/CD pipeline\n- Schedule demo with stakeholders",
+    "tags": ["work", "project", "active"],
+    "created_at": "2024-12-01T09:00:00Z",
+    "updated_at": "2025-01-10T16:45:00Z"
+  },
+  {
+    "id": "podcast-distributed-systems",
+    "title": "Podcast: Software Engineering Daily - Distributed Systems",
+    "content": "# Podcast: Software Engineering Daily - Distributed Systems\n\n**Episode:** Distributed Consensus Algorithms\n**URL:** https://softwareengineeringdaily.com/episode-442\n**Date Listened:** 2025-01-12\n**Duration:** 58 minutes\n**Listen Time:** 10:00-11:00 AM\n\n## Notes\n\n[05:30] Introduction to CAP theorem - can't have all three: Consistency, Availability, Partition tolerance\n\n[12:15] Raft algorithm explanation - simpler alternative to Paxos\n\n[28:40] Real-world example: How Consul uses Raft for service discovery\n\n[45:20] Discussion on eventual consistency vs strong consistency tradeoffs\n\n## Key Takeaways\n\n- Raft is more understandable than Paxos for most teams\n- Choose consistency model based on use case, not ideology\n- Testing distributed systems requires chaos engineering\n\n## Follow-up\n\n- Read Raft paper: https://raft.github.io/\n- Check out Consul documentation\n- Look into Jepsen for testing",
+    "tags": ["podcast", "learning", "distributed-systems", "technical"],
+    "metadata": {
+      "url": "https://softwareengineeringdaily.com/episode-442",
+      "media_type": "podcast",
+      "duration_minutes": 58,
+      "listened_at": "2025-01-12T10:00:00Z"
+    },
+    "created_at": "2025-01-12T11:05:00Z",
+    "updated_at": "2025-01-12T11:30:00Z"
+  },
+  {
+    "id": "youtube-python-async",
+    "title": "YouTube: Advanced Python Async Patterns",
+    "content": "# YouTube: Advanced Python Async Patterns\n\n**Video:** ArjanCodes - Modern Async Python\n**URL:** https://youtube.com/watch?v=abc123xyz\n**Date Watched:** 2025-01-11\n**Duration:** 24 minutes\n**Watch Time:** 14:30-15:00\n\n## Notes\n\n[02:15] Introduction to asyncio event loop\n\n[08:45] Common mistake: mixing sync and async code\n\n[15:20] Best practice: use aiohttp for async HTTP requests\n\n[20:10] Demo of async context managers\n\n## Code Examples Saved\n\n```python\nasync with aiohttp.ClientSession() as session:\n    async with session.get(url) as response:\n        return await response.json()\n```\n\n## To Try\n\n- Refactor API client to use aiohttp\n- Add proper error handling to async functions",
+    "tags": ["youtube", "learning", "python", "async", "technical"],
+    "metadata": {
+      "url": "https://youtube.com/watch?v=abc123xyz",
+      "media_type": "video",
+      "duration_minutes": 24,
+      "watched_at": "2025-01-11T14:30:00Z"
+    },
+    "created_at": "2025-01-11T15:05:00Z",
+    "updated_at": "2025-01-11T15:15:00Z"
+  },
+  {
+    "id": "reading-list",
+    "title": "Reading List - Technical",
+    "content": "# Reading List - Technical\n\n## To Read\n\n- [ ] \"Designing Data-Intensive Applications\" by Martin Kleppmann\n- [ ] \"Staff Engineer\" by Will Larson\n- [ ] \"The Pragmatic Programmer\" (re-read)\n\n## Currently Reading\n\n- [x] \"System Design Interview\" - Chapter 5 (50% done)\n\n## Articles Queue\n\n1. \"Understanding Database Indexes\" - https://use-the-index-luke.com/\n2. \"Microservices Patterns\" - https://microservices.io/patterns/\n3. \"Redis Best Practices\" - saved from Reddit\n\n## Completed\n\n- [x] \"Clean Code\" by Robert Martin (2024-12-15)\n- [x] \"Kubernetes Up & Running\" (2024-11-20)",
+    "tags": ["reading", "learning", "technical", "books"],
+    "created_at": "2024-10-01T09:00:00Z",
+    "updated_at": "2025-01-10T20:15:00Z"
+  },
+  {
+    "id": "daily-journal-2025-01-13",
+    "title": "Daily Journal - January 13, 2025",
+    "content": "# Daily Journal - January 13, 2025\n\n## Morning\n\nWoke up at 6:30 AM. Feeling energized after good sleep.\n\nMorning walk: 30 minutes. Clear head, ready for the day.\n\n## Work\n\n- Completed code review for Alex's PR\n- Made progress on authentication refactor\n- 1:1 with manager - discussed career growth\n\n## Evening\n\nGym session: 45 minutes strength training\n\nDinner with family - tried new recipe (success!)\n\n## Reflections\n\nProductive day. Feeling good about work-life balance lately. Need to remember to take breaks more often during deep work sessions.\n\n## Tomorrow\n\n- Finish authentication module\n- Team standup at 10 AM\n- Dentist appointment at 4:30 PM",
+    "tags": ["journal", "personal", "daily"],
+    "created_at": "2025-01-13T21:00:00Z",
+    "updated_at": "2025-01-13T21:30:00Z"
+  },
+  {
+    "id": "meeting-notes-standup",
+    "title": "Team Standup Notes - January 2025",
+    "content": "# Team Standup Notes - January 2025\n\n## January 13, 2025\n\n**Attendees:** Sarah, Mike, Alex, Jordan\n\n- Sarah: Working on database migration, ETA Friday\n- Mike: Code review backlog, needs help\n- Alex: Frontend components done, ready for testing\n- Jordan: Investigating performance issue in search\n\n**Blockers:** None\n\n## January 10, 2025\n\n**Attendees:** Sarah, Mike, Alex\n\n- Sprint planning completed\n- New tickets assigned\n- Sarah to lead architecture review next week",
+    "tags": ["work", "meetings", "standup", "team"],
+    "created_at": "2025-01-10T10:00:00Z",
+    "updated_at": "2025-01-13T10:15:00Z"
+  },
+  {
+    "id": "ideas-backlog",
+    "title": "Ideas & Project Backlog",
+    "content": "# Ideas & Project Backlog\n\n## Active Ideas\n\n### Browser Extension for Quote Saving\nCapture interesting quotes from web pages with context.\nNeeds: Chrome extension API research\n\n### Personal Metrics Dashboard\nCombine fitness, productivity, finance data in one view.\nPotential tech: React + Chart.js + Firebase\n\n## Someday/Maybe\n\n- Habit tracker with gamification\n- Recipe organizer app\n- Automated backup system for notes\n- Mobile app for voice journaling\n\n## Completed\n\n- ✓ Smart home automation setup (2024-11)\n- ✓ Personal website redesign (2024-09)",
+    "tags": ["ideas", "projects", "brainstorming"],
+    "created_at": "2024-08-01T09:00:00Z",
+    "updated_at": "2025-01-12T19:20:00Z"
+  },
+  {
+    "id": "tech-docs-python",
+    "title": "Python Technical Documentation",
+    "content": "# Python Technical Documentation\n\n## Virtual Environments\n\n```bash\n# Create venv\npython -m venv .venv\n\n# Activate (Unix)\nsource .venv/bin/activate\n\n# Activate (Windows)\n.venv\\Scripts\\activate\n```\n\n## Common Commands\n\n```bash\n# Install requirements\npip install -r requirements.txt\n\n# Freeze dependencies\npip freeze > requirements.txt\n\n# Run tests\npytest tests/\n\n# Type checking\nmypy src/\n```\n\n## Useful Snippets\n\n### Context Manager\n```python\nfrom contextlib import contextmanager\n\n@contextmanager\ndef timer(name):\n    start = time.time()\n    yield\n    print(f\"{name}: {time.time() - start:.2f}s\")\n```\n\n### Logging Setup\n```python\nimport logging\n\nlogging.basicConfig(\n    level=logging.INFO,\n    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'\n)\n```",
+    "tags": ["technical", "documentation", "python", "reference"],
+    "created_at": "2024-06-15T10:00:00Z",
+    "updated_at": "2025-01-08T14:20:00Z"
+  },
+  {
+    "id": "work-tasks",
+    "title": "Work Tasks & TODOs",
+    "content": "# Work Tasks & TODOs\n\n## High Priority\n\n- [ ] Fix authentication bug in production (reported by client)\n- [ ] Review security audit findings\n- [ ] Complete Q1 performance review self-assessment\n\n## This Week\n\n- [ ] Update API documentation\n- [ ] Refactor database query optimization\n- [ ] Schedule team retrospective\n- [ ] Submit expense report\n\n## Backlog\n\n- [ ] Research new monitoring tools\n- [ ] Clean up deprecated endpoints\n- [ ] Update onboarding documentation\n- [ ] Organize code review guidelines\n\n## Completed\n\n- [x] Deploy hotfix for login issue (2025-01-12)\n- [x] Attend security training (2025-01-10)\n- [x] Update dependencies (2025-01-08)",
+    "tags": ["work", "tasks", "todo"],
+    "created_at": "2025-01-01T09:00:00Z",
+    "updated_at": "2025-01-13T08:45:00Z"
+  },
+  {
+    "id": "personal-errands",
+    "title": "Personal Errands & Tasks",
+    "content": "# Personal Errands & Tasks\n\n## This Week\n\n- [ ] Buy groceries (milk, eggs, bread, vegetables)\n- [ ] Call dentist for cleaning appointment\n- [ ] Pick up dry cleaning (Thursday)\n- [ ] Order birthday gift for Mom (birthday: Jan 20)\n\n## Upcoming\n\n- [ ] Car oil change (due: mid-February)\n- [ ] Renew gym membership\n- [ ] Schedule annual physical\n\n## Completed\n\n- [x] Return Amazon package (2025-01-11)\n- [x] Pay utility bills (2025-01-10)\n- [x] Get haircut (2025-01-08)",
+    "tags": ["personal", "errands", "tasks"],
+    "created_at": "2025-01-08T18:00:00Z",
+    "updated_at": "2025-01-13T09:00:00Z"
+  },
+  {
+    "id": "finance-tracking",
+    "title": "Finance & Expenses",
+    "content": "# Finance & Expenses\n\n## January 2025 Expenses\n\n### Business/Reimbursable\n\n- AWS bill: $45.99 (2025-01-05)\n- Coffee with client: $28.50 (2025-01-08)\n- Conference ticket: $299.00 (2025-01-10)\n\n### Subscriptions\n\n- GitHub Pro: $4/month (auto-renew)\n- Netflix: $15.99/month (auto-renew)\n- Spotify: $9.99/month (auto-renew)\n- Cloud Storage: $2.99/month (auto-renew)\n\n### One-time\n\n- New keyboard: $129.99 (2025-01-06)\n- Books: $67.50 (2025-01-09)\n\n## Tax Documents\n\n- Q4 2024 estimated tax paid: $3,200 (2024-12-15)\n- W2 expected: February 2025\n\n## Notes\n\nRemember to categorize AWS and conference as professional development expenses.",
+    "tags": ["finance", "expenses", "taxes", "money"],
+    "created_at": "2025-01-01T10:00:00Z",
+    "updated_at": "2025-01-10T21:30:00Z"
+  },
+  {
+    "id": "health-fitness",
+    "title": "Health & Fitness Log",
+    "content": "# Health & Fitness Log\n\n## Workout Schedule\n\n**Goal:** 4x per week (Mon, Wed, Fri, Sat)\n\n### This Week (Jan 8-14, 2025)\n\n- Mon: Upper body (45 min) ✓\n- Wed: Cardio + core (40 min) ✓\n- Fri: Lower body (scheduled)\n- Sat: Yoga (scheduled)\n\n## Health Notes\n\n### Medical\n\n- Last checkup: October 2024\n- Next dentist: TBD (need to schedule)\n- Prescriptions: All current\n\n### Sleep Tracking\n\n- Jan 13: 7.5 hours (good quality)\n- Jan 12: 6 hours (restless)\n- Jan 11: 8 hours (excellent)\n\nAverage: 7.2 hours/night (goal: 7-8)\n\n## Nutrition\n\nFocusing on:\n- More vegetables\n- Reduce coffee to 2 cups/day\n- Meal prep Sundays",
+    "tags": ["health", "fitness", "personal", "wellness"],
+    "created_at": "2024-12-28T10:00:00Z",
+    "updated_at": "2025-01-13T22:00:00Z"
+  },
+  {
+    "id": "research-ml-optimization",
+    "title": "Research: ML Model Optimization",
+    "content": "# Research: ML Model Optimization\n\n## Goal\n\nImprove inference speed for production ML models without sacrificing accuracy.\n\n## Papers to Read\n\n1. \"Distilling the Knowledge in a Neural Network\" (Hinton et al.)\n2. \"Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference\"\n3. \"MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications\"\n\n## Techniques to Explore\n\n### Model Compression\n- Pruning (remove unnecessary weights)\n- Quantization (reduce precision)\n- Knowledge distillation (smaller student model)\n\n### Architecture Changes\n- Depthwise separable convolutions\n- Efficient attention mechanisms\n- Mobile-optimized architectures\n\n## Experiments\n\n- [ ] Baseline model performance metrics\n- [ ] Try INT8 quantization\n- [ ] Implement pruning strategy\n- [ ] Compare accuracy vs speed tradeoffs\n\n## Resources\n\n- TensorFlow Model Optimization Toolkit\n- PyTorch Mobile\n- ONNX Runtime",
+    "tags": ["research", "machine-learning", "optimization", "technical"],
+    "created_at": "2025-01-05T14:00:00Z",
+    "updated_at": "2025-01-12T16:30:00Z"
+  },
+  {
+    "id": "general-reference",
+    "title": "General Reference & Quick Notes",
+    "content": "# General Reference & Quick Notes\n\n## Useful Links\n\n- Company VPN setup: https://internal.company.com/vpn\n- Expense reporting: https://expenses.company.com\n- Time tracking: https://time.company.com\n\n## Quick Commands\n\n### Git\n```bash\n# Reset to remote\ngit reset --hard origin/main\n\n# Undo last commit (keep changes)\ngit reset --soft HEAD~1\n\n# Interactive rebase\ngit rebase -i HEAD~3\n```\n\n### Docker\n```bash\n# Remove all stopped containers\ndocker container prune\n\n# Remove unused images\ndocker image prune -a\n\n# View logs\ndocker logs -f container_name\n```\n\n## Keyboard Shortcuts (VS Code)\n\n- Cmd+P: Quick file open\n- Cmd+Shift+P: Command palette\n- Cmd+D: Select next occurrence\n- Opt+Shift+F: Format document\n\n## Random Notes\n\n- WiFi password for guest network: Guest2025!\n- Conference room booking system updated (use Outlook now)\n- New coffee machine instructions posted in kitchen",
+    "tags": ["reference", "commands", "shortcuts", "notes"],
+    "created_at": "2024-09-01T10:00:00Z",
+    "updated_at": "2025-01-11T11:45:00Z"
+  }
+]
