@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Note Sorting System - Demo</title>
+  <link rel="stylesheet" href="demo/styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="header-content">
+        <h1>📝 Note Sorting System</h1>
+        <div class="header-actions">
+          <button id="settings-btn" class="btn-icon" title="Settings">⚙️</button>
+          <a href="https://github.com" class="btn-icon" title="GitHub" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="panel panel-left">
+        <div class="panel-header">
+          <h2>Input Snippet</h2>
+        </div>
+        <div class="panel-body">
+          <div class="section">
+            <h3>Example Snippets</h3>
+            <div id="example-snippets" class="snippet-list">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Custom Input</h3>
+            <textarea
+              id="custom-snippet"
+              placeholder="Enter your snippet here..."
+              rows="6"
+            ></textarea>
+            <button id="match-btn" class="btn-primary">Match to Notes</button>
+          </div>
+
+          <div class="section">
+            <h3>Current Snippet</h3>
+            <div id="current-snippet" class="snippet-display">
+              <p class="placeholder">Select an example or enter custom text</p>
+            </div>
+            <div id="snippet-metadata" class="metadata">
+              <!-- Populated when snippet is selected -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-middle">
+        <div class="panel-header">
+          <h2>Matching Process</h2>
+          <button id="toggle-matchers" class="btn-small">Toggle Matchers</button>
+        </div>
+        <div class="panel-body">
+          <div class="section">
+            <h3>Active Matchers</h3>
+            <div id="matcher-status" class="matcher-list">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Score Breakdown</h3>
+            <div id="score-breakdown" class="score-display">
+              <p class="placeholder">Run matching to see scores</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Top Candidates</h3>
+            <div id="top-candidates" class="candidate-list">
+              <p class="placeholder">No matches yet</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-right">
+        <div class="panel-header">
+          <h2>Results</h2>
+        </div>
+        <div class="panel-body">
+          <div class="section">
+            <h3>Best Match</h3>
+            <div id="best-match" class="note-preview">
+              <p class="placeholder">No match selected</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Preview</h3>
+            <div id="insertion-preview" class="insertion-preview">
+              <p class="placeholder">Select a match to preview insertion</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>All Notes</h3>
+            <div id="all-notes" class="note-list">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Settings</h2>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="settings-section">
+            <h3>Matcher Configuration</h3>
+            <div id="matcher-toggles">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Hybrid Scorer Weights</h3>
+            <div id="weight-sliders">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Interactive Disambiguation</h3>
+            <label>
+              Confidence Threshold: <span id="confidence-value">0.7</span>
+              <input type="range" id="confidence-threshold" min="0" max="1" step="0.05" value="0.7">
+            </label>
+          </div>
+
+          <div class="settings-section">
+            <button id="reset-config" class="btn-secondary">Reset to Defaults</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="demo/app.js"></script>
+</body>
+</html>

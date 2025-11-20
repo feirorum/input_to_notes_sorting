@@ -1,0 +1,23 @@
+{
+  "name": "note-sorting-system",
+  "version": "1.0.0",
+  "description": "Experimentation repo for automatic note sorting and categorization",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "keywords": ["notes", "sorting", "nlp", "knowledge-management"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "stopword": "^2.0.8"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}
