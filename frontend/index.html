@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Sorting Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1.3fr;
+            gap: 1rem;
+            padding: 1rem;
+            height: calc(100vh - 100px);
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Panel 1 - Input */
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .examples {
+            margin-bottom: 1rem;
+        }
+
+        .examples h3 {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .example-item {
+            padding: 0.6rem;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 0.4rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .example-item:hover {
+            background: #e8eeff;
+            border-color: #667eea;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: auto;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #666;
+        }
+
+        select, input[type="number"] {
+            padding: 0.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        select:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            padding: 0.75rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Panel 2 - Results */
+        .auto-proposal {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .auto-proposal h3 {
+            font-size: 1rem;
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+        }
+
+        .auto-proposal p {
+            font-size: 0.9rem;
+            color: #1b5e20;
+            margin-bottom: 0.25rem;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .results-table th {
+            background: #f5f5f5;
+            padding: 0.6rem 0.4rem;
+            text-align: left;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 2px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+        }
+
+        .results-table td {
+            padding: 0.6rem 0.4rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .results-table tr {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .results-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .results-table tr.selected {
+            background: #e8eeff;
+        }
+
+        .results-table tr.ghost-suggestion {
+            background: #fff8e1;
+        }
+
+        .score {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-stream {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .badge-snapshot {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .badge-never {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        /* Panel 3 - Preview */
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .preview-header h3 {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .preview-content {
+            flex: 1;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 1rem;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .preview-diff {
+            background: #e8f5e9;
+            border-left: 3px solid #4caf50;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .preview-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .preview-actions button {
+            flex: 1;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 3rem 1rem;
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #667eea;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧪 Semantic Sorting Lab</h1>
+        <p>Prototype for testing semantic similarity between snippets and notes</p>
+    </div>
+
+    <div class="container">
+        <!-- Panel 1: Input -->
+        <div class="panel">
+            <h2>📝 Snippet Input</h2>
+
+            <textarea id="snippetInput" placeholder="Enter your snippet here..."></textarea>
+
+            <div class="examples">
+                <h3>Example Snippets</h3>
+                <div id="examplesList"></div>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label for="modeSelect">Decision Mode</label>
+                    <select id="modeSelect">
+                        <option value="manual">Manual (A)</option>
+                        <option value="auto">Auto-baseline (B)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="thresholdInput">Score Threshold</label>
+                    <input type="number" id="thresholdInput" min="0" max="1" step="0.05" value="0.80">
+                </div>
+
+                <button id="analyzeBtn">🔍 Analyze Snippet</button>
+            </div>
+        </div>
+
+        <!-- Panel 2: Results -->
+        <div class="panel">
+            <h2>📊 Similarity Results</h2>
+            <div id="resultsContainer">
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <p>Click "Analyze Snippet" or select an example to start</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel 3: Preview -->
+        <div class="panel">
+            <h2>👁️ Note Preview</h2>
+            <div id="previewContainer">
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    <p>Select a note from results to preview</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_URL = 'http://localhost:8000';
+
+        // Example snippets
+        const EXAMPLES = [
+            "Efter ca 30 min körning tappade bilen kraft, inget synligt läckage…",
+            "Tips om att Copilot kan användas för testskript med pytest",
+            "Logg: Vädret under simpass, tränade sighting…",
+            "Projektidé angående Semantic Similarity i Obsidian",
+            "Anteckning Kommun-uppdatering om AI och kunskapsdelning",
+            "Startproblem – slog bara hackvis vid försök",
+            "Notering: Koncept för vibekoding",
+            "Bytte bromsklossar fram, hörde skrapljud tidigare",
+            "Idé om automatisk transkribering av podcast-anteckningar",
+            "Tränade 60 min idag, fokus på uthållighet och teknik"
+        ];
+
+        // State
+        let currentResults = null;
+        let selectedNoteId = null;
+        let currentSnippet = '';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadExamples();
+            setupEventListeners();
+        });
+
+        function loadExamples() {
+            const list = document.getElementById('examplesList');
+            EXAMPLES.forEach((example, index) => {
+                const div = document.createElement('div');
+                div.className = 'example-item';
+                div.textContent = example;
+                div.onclick = () => selectExample(example);
+                list.appendChild(div);
+            });
+        }
+
+        function setupEventListeners() {
+            document.getElementById('analyzeBtn').onclick = analyzeSnippet;
+            document.getElementById('snippetInput').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && e.ctrlKey) {
+                    analyzeSnippet();
+                }
+            });
+        }
+
+        function selectExample(text) {
+            document.getElementById('snippetInput').value = text;
+            analyzeSnippet();
+        }
+
+        async function analyzeSnippet() {
+            const snippet = document.getElementById('snippetInput').value.trim();
+            const mode = document.getElementById('modeSelect').value;
+            const threshold = parseFloat(document.getElementById('thresholdInput').value);
+
+            if (!snippet) {
+                showError('Please enter a snippet to analyze');
+                return;
+            }
+
+            currentSnippet = snippet;
+
+            // Show loading
+            document.getElementById('resultsContainer').innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing snippet...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(`${API_URL}/analyze`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        snippet,
+                        threshold,
+                        mode,
+                        top_k: 10
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                currentResults = data;
+                displayResults(data, mode);
+            } catch (error) {
+                showError(`Error analyzing snippet: ${error.message}`);
+            }
+        }
+
+        function displayResults(data, mode) {
+            const container = document.getElementById('resultsContainer');
+            let html = '';
+
+            // Show auto proposal if in auto mode
+            if (mode === 'auto' && data.auto_proposal) {
+                const proposal = data.auto_proposal;
+                html += `
+                    <div class="auto-proposal">
+                        <h3>🎯 Auto-proposal: ${proposal.action === 'append' ? 'Append' : 'Create new'} to "${proposal.target_title}"</h3>
+                        <p><strong>Reason:</strong> ${proposal.reason}</p>
+                    </div>
+                `;
+            }
+
+            // Results table
+            html += `
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Title</th>
+                            <th>Score</th>
+                            <th>Mode</th>
+                            ${mode === 'auto' ? '<th>Auto</th>' : ''}
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            data.results.forEach(result => {
+                const rowClass = (mode === 'manual' && result.rank === 1 && result.score >= parseFloat(document.getElementById('thresholdInput').value) && result.append_mode === 'stream') ? 'ghost-suggestion' : '';
+
+                html += `
+                    <tr class="${rowClass}" onclick="selectNote('${result.note_id}')">
+                        <td>${result.rank}</td>
+                        <td>${result.title}</td>
+                        <td><span class="score">${result.score.toFixed(3)}</span></td>
+                        <td><span class="badge badge-${result.append_mode}">${result.append_mode}</span></td>
+                        ${mode === 'auto' ? `<td>${result.auto_suggestion || '–'}</td>` : ''}
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+
+            // Auto-select first result in auto mode
+            if (mode === 'auto' && data.auto_proposal) {
+                selectNote(data.auto_proposal.target_note_id);
+            }
+        }
+
+        async function selectNote(noteId) {
+            selectedNoteId = noteId;
+
+            // Highlight selected row
+            document.querySelectorAll('.results-table tr').forEach(row => {
+                row.classList.remove('selected');
+            });
+            event.target.closest('tr')?.classList.add('selected');
+
+            // Load note preview
+            document.getElementById('previewContainer').innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading preview...</p>
+                </div>
+            `;
+
+            try {
+                // Get note content
+                const noteResponse = await fetch(`${API_URL}/notes/${noteId}`);
+                const note = await noteResponse.json();
+
+                // Get preview with append
+                const previewResponse = await fetch(`${API_URL}/preview-append`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        note_id: noteId,
+                        snippet: currentSnippet
+                    })
+                });
+                const preview = await previewResponse.json();
+
+                displayPreview(note, preview);
+            } catch (error) {
+                showError(`Error loading preview: ${error.message}`);
+            }
+        }
+
+        function displayPreview(note, preview) {
+            const container = document.getElementById('previewContainer');
+
+            // Find the diff (new content)
+            const original = note.content;
+            const updated = preview.preview_content;
+
+            let html = `
+                <div class="preview-header">
+                    <div>
+                        <h3>${note.title}</h3>
+                        <small style="color: #666;">${note.folder} • <span class="badge badge-${note.append_mode}">${note.append_mode}</span></small>
+                    </div>
+                </div>
+            `;
+
+            // Show content with diff highlighting
+            if (original !== updated && note.append_mode !== 'never') {
+                const diffContent = highlightDiff(original, updated);
+                html += `
+                    <div class="preview-content">${diffContent}</div>
+                    <div class="preview-actions">
+                        <button onclick="appendToNote('${note.id}')">✅ Append to this note</button>
+                        <button class="btn-secondary" onclick="createNewNote()">➕ Create new note</button>
+                    </div>
+                `;
+            } else {
+                html += `
+                    <div class="preview-content">${escapeHtml(original)}</div>
+                    <div class="preview-actions">
+                        ${note.append_mode !== 'never' ? `<button onclick="appendToNote('${note.id}')">✅ Append to this note</button>` : ''}
+                        <button class="btn-secondary" onclick="createNewNote()">➕ Create new note</button>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function highlightDiff(original, updated) {
+            // Simple diff: find the new content
+            const lines = updated.split('\n');
+            const originalLines = original.split('\n');
+
+            return lines.map(line => {
+                if (!originalLines.includes(line) && line.trim()) {
+                    return `<div class="preview-diff">${escapeHtml(line)}</div>`;
+                }
+                return escapeHtml(line);
+            }).join('\n');
+        }
+
+        async function appendToNote(noteId) {
+            if (!currentSnippet) {
+                showError('No snippet to append');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/append`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        note_id: noteId,
+                        snippet: currentSnippet
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+
+                const result = await response.json();
+                showSuccess(`✅ ${result.message}`);
+
+                // Reload preview
+                setTimeout(() => selectNote(noteId), 500);
+            } catch (error) {
+                showError(`Error appending: ${error.message}`);
+            }
+        }
+
+        function createNewNote() {
+            alert('Create new note functionality would open a dialog here.\nIn Phase 1, this is a placeholder.');
+        }
+
+        function showError(message) {
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = `<div class="error">${message}</div>` + resultsContainer.innerHTML;
+            setTimeout(() => {
+                document.querySelector('.error')?.remove();
+            }, 5000);
+        }
+
+        function showSuccess(message) {
+            const previewContainer = document.getElementById('previewContainer');
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success';
+            successDiv.textContent = message;
+            previewContainer.insertBefore(successDiv, previewContainer.firstChild);
+            setTimeout(() => {
+                successDiv.remove();
+            }, 3000);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
