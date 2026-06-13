@@ -1,0 +1,75 @@
+:root {
+  --bg: #f4f1ea;
+  --panel: #fff;
+  --ink: #2b2b2b;
+  --muted: #6b6b6b;
+  --line: #e0dccf;
+  --accent: #b5651d;
+  --green: #2e7d32;
+  --amber: #b08900;
+  --red: #b3261e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.5 -apple-system, Segoe UI, Roboto, sans-serif;
+}
+header {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding: 14px 20px; background: var(--panel); border-bottom: 1px solid var(--line);
+}
+header h1 { font-size: 18px; margin: 0; }
+.muted { color: var(--muted); font-size: 13px; }
+.hint { color: var(--muted); font-size: 12px; }
+.badge {
+  background: var(--accent); color: #fff; border-radius: 10px;
+  padding: 2px 8px; font-size: 12px;
+}
+.panes { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 14px; padding: 16px; }
+.pane { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+.pane h2 { font-size: 14px; margin: 0 0 8px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.examples { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.example { text-align: left; background: #faf8f2; border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; cursor: pointer; font-size: 13px; }
+.example:hover { border-color: var(--accent); }
+textarea { width: 100%; border: 1px solid var(--line); border-radius: 6px; padding: 8px; font: inherit; resize: vertical; }
+.row { display: flex; gap: 8px; margin-top: 8px; }
+button { background: #efeadd; border: 1px solid var(--line); border-radius: 6px; padding: 7px 12px; cursor: pointer; font: inherit; }
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+button.small { padding: 3px 8px; font-size: 12px; }
+.empty { color: var(--muted); font-style: italic; }
+.hidden { display: none; }
+
+.decision-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.action { font-weight: 600; padding: 2px 8px; border-radius: 6px; color: #fff; font-size: 13px; }
+.action.append_to_existing_note { background: var(--green); }
+.action.create_new_note { background: var(--accent); }
+.action.leave_in_inbox_ask { background: var(--amber); }
+.action.needs_review { background: var(--red); }
+.conf { font-variant-numeric: tabular-nums; }
+.bar { height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin: 6px 0; }
+.bar > i { display: block; height: 100%; background: var(--accent); }
+.reason { margin: 8px 0; }
+.asks { background: #fff7e6; border: 1px solid #f0dca0; border-radius: 6px; padding: 8px; margin: 8px 0; }
+.asks ul { margin: 4px 0 0 18px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }
+.chip { background: #f0ece0; border-radius: 10px; padding: 1px 8px; font-size: 12px; }
+.chip.warn { background: #fde7e7; color: var(--red); }
+
+table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+th, td { text-align: left; padding: 6px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.score-total { font-variant-numeric: tabular-nums; font-weight: 600; }
+.mscore { display: block; color: var(--muted); font-size: 12px; }
+.mscore b { color: var(--ink); }
+
+pre.note { background: #fbfaf5; border: 1px solid var(--line); border-radius: 6px; padding: 10px; white-space: pre-wrap; font-size: 12.5px; max-height: 320px; overflow: auto; }
+.added { background: #d7f0d8; }
+.path { font-family: monospace; font-size: 12px; color: var(--accent); }
+
+.workflow { padding: 0 16px 28px; }
+.tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+.tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.item { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+.item .meta { color: var(--muted); font-size: 12px; }
+.item .actions { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.item .text { margin: 4px 0; }

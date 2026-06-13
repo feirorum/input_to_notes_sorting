@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Capture Inbox → Obsidian Sorter</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Capture Inbox → Obsidian Sorter</h1>
+    <span class="badge">classifier: {{ classifier }}</span>
+    <span class="muted">Raw input is always saved before sorting.</span>
+  </header>
+
+  <main class="panes">
+    <!-- LEFT: example data + capture box -->
+    <section class="pane" id="pane-input">
+      <h2>1 · Capture</h2>
+      <p class="muted">Pick an example or type a note.</p>
+      <div class="examples">
+        {% for ex in examples %}
+        <button class="example" data-text="{{ ex|e }}">{{ ex }}</button>
+        {% endfor %}
+      </div>
+      <textarea id="text" rows="4" placeholder="Type a quick note…"></textarea>
+      <div class="row">
+        <button id="btn-explain" class="primary">Explain (dry run)</button>
+        <button id="btn-capture">Save to inbox</button>
+      </div>
+      <p class="hint">Explain scores the note without changing anything.
+        Save to inbox stores it raw so you can Process it below.</p>
+    </section>
+
+    <!-- MIDDLE: matchers + scores + decision -->
+    <section class="pane" id="pane-scores">
+      <h2>2 · Matchers &amp; scores</h2>
+      <div id="decision" class="empty">No note evaluated yet.</div>
+      <div id="signals"></div>
+      <table id="scores" class="hidden">
+        <thead><tr><th>Destination</th><th>Total</th><th>Matchers</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- RIGHT: where it lands -->
+    <section class="pane" id="pane-target">
+      <h2>3 · Where it lands</h2>
+      <div id="target" class="empty">Evaluate a note to see the target.</div>
+    </section>
+  </main>
+
+  <section class="workflow">
+    <div class="tabs">
+      <button class="tab active" data-tab="inbox">Inbox</button>
+      <button class="tab" data-tab="review">Needs review / pending</button>
+      <button class="tab" data-tab="processed">Processed</button>
+      <button class="tab" data-tab="audit">Audit log</button>
+    </div>
+    <div id="tab-body"></div>
+  </section>
+
+  <datalist id="dest-list">
+    {% for d in destinations %}
+    <option value="{{ d.key }}">{{ d.label }}</option>
+    {% endfor %}
+  </datalist>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
